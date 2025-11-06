@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSun, FiMoon, FiGithub } from 'react-icons/fi';
+import { FiSun, FiMoon, FiGithub, FiChevronUp } from 'react-icons/fi';
 import { resumeData } from '../data/resumeData';
-
+import { useMediaQuery } from 'react-responsive';
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -13,6 +13,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const isMobile = useMediaQuery({ query: '(max-width: 450px)' });
 
   return (<div className={`border ${darkMode ? 'border-neutral-700 bg-black' : 'border-gray-300 bg-white'} ${scrolled ? 'shadow-sm' : ''}`}>
     <div className="max-w-6xl mx-auto px-0 sm:px-4 md:px-6 lg:px-8">
@@ -43,7 +45,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               className={`border p-2 rounded-lg font-extrabold ${darkMode ? 'border-neutral-600 text-zinc-300 hover:text-white' : 'border-gray-300 text-gray-700 hover:text-gray-900'}`}
               aria-label="GitHub"
             >
-              <FiGithub size={18} fill={darkMode ? 'gray' : 'white' } className='sm:w-5' />
+              <FiGithub size={18} className='sm:w-5' />
             </a>
             <button
               onClick={toggleDarkMode}
@@ -56,6 +58,29 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         </div>
       </nav>
     </div>
+
+    {/* Scroll-to-top button */}
+    <AnimatePresence>
+      {scrolled && (
+        <motion.button
+          key="scroll-top"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 24 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
+          className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-999
+            border rounded-full shadow-lg backdrop-blur
+            ${darkMode ? 'bg-neutral-900/90 border-neutral-600 text-zinc-200 hover:bg-neutral-800' : 'bg-white/90 border-gray-300 text-gray-700 hover:bg-gray-100'}
+            h-13 w-13 sm:h-18 sm:w-18 flex items-center justify-center`}
+          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.05 }}
+        >
+          <FiChevronUp size={isMobile ? 20 : 25} />
+        </motion.button>
+      )}
+    </AnimatePresence>
   </div>
   );
 };

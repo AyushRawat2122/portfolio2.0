@@ -9,7 +9,7 @@ export const resumeData = {
     github: "AyushRawat2122",
     linkedin: "Ayush Rawat",
     leetcode: "AyushRawat0",
-    portfolio: "ayushrawat.dev",
+    portfolio: "ayushcodes.tech",
   },
 
   about: `I’m a Computer Science student and aspiring Full-Stack Developer passionate about building scalable, user-focused web applications.
@@ -106,7 +106,7 @@ export const resumeData = {
   certifications: [
     { title: "HackerRank Intermediate JavaScript", year: "2025", icon: "SiHackerrank", link: "https://www.hackerrank.com/certificates/023c56005d41" },
     { title: "HackerRank Problem Solving", year: "2024", icon: "SiHackerrank", link: "https://www.hackerrank.com/certificates/8b1056434d8b" },
-    { title: "MERN Stack Specialization", year: "2025", link: "https://media.licdn.com/dms/image/v2/D562DAQFdziTexOhTEw/profile-treasury-image-shrink_800_800/B56ZjvgMMQHUAY-/0/1756364857849?e=1762167600&v=beta&t=5plfkQKMSpUThQt762XEgR11dTb2GYHiCkc1RyD32Fw", icon: "https://media.licdn.com/dms/image/v2/C510BAQG-rlPs90C2EA/company-logo_100_100/company-logo_100_100/0/1630589399099?e=1762992000&v=beta&t=TW8JE-xJbpmdqq5uOssFFBDqWZnThME7qRETGX2oWK8" }, 
+    { title: "MERN Stack Specialization", year: "2025", link: "https://res.cloudinary.com/dmexqemkr/image/upload/v1762440148/r83lsxdrwtxjj6gfsxmb.png", icon: "https://media.licdn.com/dms/image/v2/C510BAQG-rlPs90C2EA/company-logo_100_100/company-logo_100_100/0/1630589399099?e=1762992000&v=beta&t=TW8JE-xJbpmdqq5uOssFFBDqWZnThME7qRETGX2oWK8" }, 
   ],
 };
 

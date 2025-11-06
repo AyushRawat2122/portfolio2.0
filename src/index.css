@@ -4,6 +4,9 @@
   --color-edge: rgba(0, 0, 0, 0.08); /* main line color */
   --pattern-foreground: var(--color-edge);
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @font-face {
   font-family: "console";
   src: url("./assets/fonts/BerkeleyMonoTrial-Regular.ttf") format("truetype");
@@ -103,4 +106,22 @@
 
 *::-webkit-scrollbar-corner {
   background: transparent;
+}
+
+:root {
+  /* Light mode (Tailwind gray) */
+  --sb-thumb: #e5e7eb; /* gray-200 */
+  --sb-hover: #d1d5db; /* gray-300 */
+  --sb-track: transparent;
+}
+.dark {
+  /* Dark mode (Tailwind neutral) */
+  --sb-thumb: #525252; /* neutral-600 */
+  --sb-hover: #737373; /* neutral-500 */
+  --sb-track: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
 }

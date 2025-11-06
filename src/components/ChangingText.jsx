@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 const ChangingText = ({ className }) => {
-    const dataList = ["Full Stack Developer", "Writing code. Building ideas. Fixing chaos.", "Tech Enthusiast"];
+    const dataList = ["Full Stack Developer", "Bon appétit, GitHub.", "Tech Enthusiast"];
     const [index, setIndex] = useState(0);
     const intervalRef = useRef(null);
 

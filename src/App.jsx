@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Navbar from './components/Navbar';
 import PatternDivider from "./components/PatternDivider";
 import PatternLineContainer from "./components/PatternLineContainer";
@@ -31,6 +31,7 @@ import ProjectItem from './components/ProjectItem';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const speakerRef = useRef(null);
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
@@ -39,7 +40,7 @@ function App() {
     {
       name: 'LinkedIn',
       handle: resumeData?.personal?.linkedin ? `@${resumeData.personal.linkedin}` : '',
-      href: `https://linkedin.com/in/${resumeData?.personal?.linkedin ?? ''}`,
+      href: `https://linkedin.com/in/ayushrawat21`,
       icon: FaLinkedin,
       color: '#0A66C2',
     },
@@ -59,12 +60,8 @@ function App() {
     },
     {
       name: 'GeeksforGeeks',
-      handle: resumeData?.personal?.geeksforgeeks
-        ? `@${resumeData.personal.geeksforgeeks}`
-        : resumeData?.personal?.gfg ? `@${resumeData.personal.gfg}` : '',
-      href: resumeData?.personal?.geeksforgeeks
-        ? `https://www.geeksforgeeks.org/user/${resumeData.personal.geeksforgeeks}/`
-        : resumeData?.personal?.gfg ? `https://www.geeksforgeeks.org/user/${resumeData.personal.gfg}/` : '#',
+      handle: '@balbeershyb35',
+      href: "https://www.geeksforgeeks.org/user/balbeershyb35/",
       icon: SiGeeksforgeeks,
       color: '#2F8D46',
     },
@@ -203,7 +200,9 @@ function App() {
               </PatternDottedContainer>
             </motion.div>
             <motion.div className='flex w-full'>
-              <div className={`relative border ${darkMode ? 'border-neutral-700 bg-neutral-900' : 'border-gray-300 bg-white'} mx-auto sm:mx-0 w-35 sm:w-52`}>
+              {/* Hidden audio element (place a small click/ beep at public/audio/click.mp3) */}
+              <audio ref={speakerRef} src="/name.mp3" preload="auto" className="hidden" playsInline />
+              <div className={`relative border ${darkMode ? 'border-neutral-700 bg-neutral-900' : 'border-gray-300 bg-white'} mx-auto sm:mx-0 w-30 sm:w-52`}>
                 <img
                   src="/profile.jpg"
                   alt="profile"
@@ -228,9 +227,21 @@ function App() {
                     {resumeData.personal.name}
                   </h1>
                   <HoverDetail detail="Verified"><RiVerifiedBadgeFill fill='#00c2ff' size={20} className='sm:w-[25px]' /></HoverDetail>
-                  <button><HiSpeakerWave fill='#dcdcdc' size={20} className='sm:w-[25px]' /></button>
+                  <button
+                    onClick={() => {
+                      try {
+                        if (speakerRef.current) {
+                          speakerRef.current.currentTime = 0;
+                          speakerRef.current.play();
+                        }
+                      } catch {}
+                    }}
+                    aria-label="Play name pronunciation"
+                  >
+                    <HiSpeakerWave fill='#dcdcdc' size={20} className='sm:w-[25px]' />
+                  </button>
                 </div>
-                <ChangingText className={"px-2 sm:px-4 py-2 text-gray-500 text-xs sm:text-lg"} />
+                <ChangingText className={"px-2 sm:px-4 py-2 text-gray-500 text-xs sm:text-lg truncate"} />
               </div>
             </motion.div>
           </section>
@@ -253,7 +264,7 @@ function App() {
 
                 <div className="flex items-center gap-3">
                   <InfoItem icon={TbWorld} darkMode={darkMode} iconSize={20} />
-                  <span className={`text-sm sm:text-base ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>Ayushrawat.vercel.app</span>
+                  <span className={`text-sm sm:text-base ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>ayushcodes.tech</span>
                 </div>
 
                 <div className="flex items-center gap-3">
@@ -522,14 +533,8 @@ function App() {
               </div>
 
               <div className={`mt-4 sm:mt-8 text-center text-xs sm:text-sm px-2 pb-4 ${darkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
-                <p className="break-words">Inspired by <a href="#" className="underline">tailwindcss.com</a> & <a href="#" className="underline">chanhdai.com</a></p>
+                <p className="break-words">Inspired by <a href="https://tailwindcss.com" className="underline">tailwindcss.com</a> & <a href="https://chanhdai.com/" className="underline">chanhdai.com</a></p>
                 <p className="mt-2">Built by <a href="#" className="underline font-medium">Ayush Rawat</a></p>
-                <div className={`mt-3 flex items-center justify-center gap-2 text-xs flex-wrap ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
-                  <a href="#" className="underline">1lns.txt</a>
-                  <span>•</span>
-                  <span>📡</span>
-                  <span>🛡️ DMCA</span>
-                </div>
               </div>
             </div>
             <PatternDivider dark={darkMode} />

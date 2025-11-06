@@ -20,12 +20,12 @@ const ProjectItem = ({ project, darkMode, idx }) => {
     <div className='w-full'>
       {/* Header */}
       <div
-        className="cursor-pointer flex border-t w-full border-gray-300 select-none"
+        className={`cursor-pointer flex border-t w-full ${darkMode ? 'border-neutral-700' : 'border-gray-300'} select-none`}
         onClick={() => setOpen((v) => !v)}
         role="button"
         aria-expanded={open}
       >
-        <div className='border-r border-gray-300 p-3'>
+        <div className={`border-r ${darkMode ? 'border-neutral-700' : 'border-gray-300'} p-3`}>
           <img src={project.image} alt={project.name} className={`h-10 object-contain contain aspect-square ${project.name === "Todoshi" ? "scale-150" : ""}`} />
         </div>
         <div className='flex p-4 items-center grow justify-between'>
@@ -75,11 +75,11 @@ const ProjectItem = ({ project, darkMode, idx }) => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="overflow-hidden border-t border-gray-300"
+            className={`overflow-hidden border-t ${darkMode ? 'border-neutral-700' : 'border-gray-300'}`}
           >
             <div className="px-4 pb-4">
               {project.description && (
-                <p className={`text-sm border-b border-gray-200 py-3 mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                <p className={`text-sm border-b ${darkMode ? 'border-neutral-700' : 'border-gray-200'} py-3 mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                   {project.description}
                 </p>
               )}
