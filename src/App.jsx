@@ -27,12 +27,13 @@ import InfoItem from './components/InfoItem';
 import GitHubContributionGrid from './components/GitHubContributionGrid';
 import { expData } from './data/resumeData';
 import ProjectItem from './components/ProjectItem';
+import { useMediaQuery } from 'react-responsive';
 
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const speakerRef = useRef(null);
-
+  const isSmallMobile = useMediaQuery({ query: '(max-width: 390px)' });
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
   // Profiles data (solid colored icons)
@@ -222,7 +223,7 @@ function App() {
                 </PatternLineContainer>
                 <div className={`flex items-center gap-2 sm:gap-1 border-b ${darkMode ? 'border-neutral-700' : 'border-gray-300'}`}>
                   <h1
-                    className={`text-4xl sm:text-3xl md:text-4xl -translate-y-1 plainText font-bold pl-2 sm:pl-4 py-2 ${darkMode ? 'text-zinc-100' : 'text-zinc-950'}`}
+                    className={`${isSmallMobile ? 'text-3xl' : 'text-4xl'} sm:text-3xl md:text-4xl -translate-y-1 plainText font-bold pl-2 sm:pl-4 py-2 ${darkMode ? 'text-zinc-100' : 'text-zinc-950'}`}
                   >
                     {resumeData.personal.name}
                   </h1>
