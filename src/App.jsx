@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import ChangingText from './components/ChangingText';
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { HiSpeakerWave } from "react-icons/hi2";
-import { TbCode, TbBulb, TbMapPin, TbPhone, TbMail, TbWorld, TbGenderMale } from "react-icons/tb";
+import { TbMapPin, TbMail, TbWorld, TbGenderMale } from "react-icons/tb";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { SiLeetcode, SiGeeksforgeeks } from "react-icons/si";
@@ -33,7 +33,7 @@ import { useMediaQuery } from 'react-responsive';
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const speakerRef = useRef(null);
-  const isSmallMobile = useMediaQuery({ query: '(max-width: 390px)' });
+  const isSmallMobile = useMediaQuery({ query: '(max-width: 370px)' });
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
   // Profiles data (solid colored icons)
@@ -223,7 +223,7 @@ function App() {
                 </PatternLineContainer>
                 <div className={`flex items-center gap-2 sm:gap-1 border-b ${darkMode ? 'border-neutral-700' : 'border-gray-300'}`}>
                   <h1
-                    className={`${isSmallMobile ? 'text-3xl' : 'text-4xl'} sm:text-3xl md:text-4xl -translate-y-1 plainText font-bold pl-2 sm:pl-4 py-2 ${darkMode ? 'text-zinc-100' : 'text-zinc-950'}`}
+                    className={`${isSmallMobile ? "text-2xl" : "text-3xl"} sm:text-3xl md:text-4xl ${!isSmallMobile && "-translate-y-1"} plainText font-bold pl-2 sm:pl-4 py-2 ${darkMode ? 'text-zinc-100' : 'text-zinc-950'}`}
                   >
                     {resumeData.personal.name}
                   </h1>
@@ -235,7 +235,7 @@ function App() {
                           speakerRef.current.currentTime = 0;
                           speakerRef.current.play();
                         }
-                      } catch {}
+                      } catch { }
                     }}
                     aria-label="Play name pronunciation"
                   >
@@ -380,7 +380,7 @@ function App() {
               <div className="p-2 sm:p-4">
                 <div className="relative">
                   {/* Vertical rail (behind dots) */}
-                  <div className={`absolute left-3 sm:left-6 top-0 bottom-0 w-px ${darkMode ? 'bg-neutral-700' : 'bg-gray-300'} z-0`} />
+                  <div className={`absolute ${isSmallMobile && 'left-2'} sm:left-6 top-0 bottom-0 w-px ${darkMode ? 'bg-neutral-700' : 'bg-gray-300'} z-0`} />
                   <ul className="space-y-4 sm:space-y-6">
                     {timeline.map((node, idx) => {
                       if (node.kind === 'label') {
@@ -487,7 +487,7 @@ function App() {
 
                         {hasLink && (
                           <HoverDetail detail="Open certificate">
-                            <FaArrowUpRightFromSquare size={16} className={`flex-shrink-0 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`} />
+                            <FaArrowUpRightFromSquare size={isSmallMobile? 10 : 16} className={`flex-shrink-0 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`} />
                           </HoverDetail>
                         )}
                       </div>
